@@ -90,4 +90,5 @@ Route::middleware(['auth', 'verified'])
         Volt::route('/profil', 'settings.profile')->name('profile');
     });
 
-require __DIR__.'/auth.php';
+// ! Penting untuk diperhatikan kode dibawah yang saya komentari (AUTH) karena saya tidak menggunakan fitur auth bawaan laravel, jadi saya menonaktifkan route auth bawaan laravel. Jika anda ingin menggunakan fitur auth bawaan laravel, silahkan hapus komentar pada kode dibawah ini
+// require __DIR__.'/auth.php';
