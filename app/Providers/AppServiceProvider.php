@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Activity;
+use App\Models\Gallery;
 use App\Models\Member;
 use App\Models\News;
+use App\Policies\ActivityPolicy;
+use App\Policies\GalleryPolicy;
 use App\Policies\MemberPolicy;
 use App\Policies\NewsPolicy;
 use Carbon\CarbonImmutable;
@@ -31,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
         $this->configureDefaults();
         Gate::policy(Member::class, MemberPolicy::class);
         Gate::policy(News::class, NewsPolicy::class);
+        Gate::policy(Gallery::class, GalleryPolicy::class);
+        Gate::policy(Activity::class, ActivityPolicy::class);
     }
 
     /**
