@@ -10,6 +10,7 @@ use App\Policies\ActivityPolicy;
 use App\Policies\GalleryPolicy;
 use App\Policies\MemberPolicy;
 use App\Policies\NewsPolicy;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Carbon::setLocale('id');
         $this->configureDefaults();
         Gate::policy(Member::class, MemberPolicy::class);
         Gate::policy(News::class, NewsPolicy::class);
