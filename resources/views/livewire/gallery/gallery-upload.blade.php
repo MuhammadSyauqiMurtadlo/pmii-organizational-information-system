@@ -1,5 +1,6 @@
 <div>
-    {{-- Upload Form --}}
+    @if ($canManageGallery)
+        {{-- Upload Form --}}
     <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800 p-6 mb-6">
         <h3 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Upload Foto</h3>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -64,6 +65,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     {{-- Filter --}}
     <div class="flex items-center gap-3 mb-4">
@@ -97,19 +99,21 @@
                     <div class="w-full p-2 translate-y-full group-hover:translate-y-0 transition-transform">
                         <p class="text-white text-xs font-medium line-clamp-1">{{ $item->title }}</p>
                         <div class="flex items-center gap-2 mt-1">
-                            <button wire:click="toggleFeatured({{ $item->id }})" title="Toggle Featured"
-                                class="text-white/80 hover:text-yellow-400 transition-colors">
-                                <x-heroicon-o-star
-                                    class="h-3.5 w-3.5 {{ $item->is_featured ? 'text-yellow-400' : '' }}" />
-                            </button>
-                            <button wire:click="togglePublic({{ $item->id }})" title="Toggle Publik"
-                                class="text-white/80 hover:text-blue-400 transition-colors">
-                                <x-heroicon-o-eye class="h-3.5 w-3.5 {{ $item->is_public ? 'text-blue-400' : '' }}" />
-                            </button>
-                            <button wire:click="deletePhoto({{ $item->id }})" wire:confirm="Hapus foto ini?"
-                                class="ml-auto text-white/80 hover:text-red-400 transition-colors">
-                                <x-heroicon-o-trash class="h-3.5 w-3.5" />
-                            </button>
+                            @if ($canManageGallery)
+                                <button wire:click="toggleFeatured({{ $item->id }})" title="Toggle Featured"
+                                    class="text-white/80 hover:text-yellow-400 transition-colors">
+                                    <x-heroicon-o-star
+                                        class="h-3.5 w-3.5 {{ $item->is_featured ? 'text-yellow-400' : '' }}" />
+                                </button>
+                                <button wire:click="togglePublic({{ $item->id }})" title="Toggle Publik"
+                                    class="text-white/80 hover:text-blue-400 transition-colors">
+                                    <x-heroicon-o-eye class="h-3.5 w-3.5 {{ $item->is_public ? 'text-blue-400' : '' }}" />
+                                </button>
+                                <button wire:click="deletePhoto({{ $item->id }})" wire:confirm="Hapus foto ini?"
+                                    class="ml-auto text-white/80 hover:text-red-400 transition-colors">
+                                    <x-heroicon-o-trash class="h-3.5 w-3.5" />
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>

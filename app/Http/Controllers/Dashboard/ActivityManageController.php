@@ -19,6 +19,7 @@ class ActivityManageController extends Controller
 
     public function show(Activity $activity)
     {
+        $this->authorize('view', $activity);
         $activity->load(['rayon', 'organizer', 'participants.member.user', 'galleries']);
 
         return view('dashboard.activities.show', compact('activity'));

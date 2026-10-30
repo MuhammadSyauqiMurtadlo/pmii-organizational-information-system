@@ -24,6 +24,15 @@
                     <div>
                         <label
                             class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">Lampiran</label>
+                        @if ($isEdit && $announcement?->attachment)
+                            <p class="mb-2 text-xs text-gray-500">
+                                Lampiran saat ini:
+                                <a class="text-emerald-600 hover:underline"
+                                    href="{{ asset('storage/' . $announcement->attachment) }}" target="_blank" rel="noopener">
+                                    Lihat lampiran
+                                </a>
+                            </p>
+                        @endif
                         <input wire:model="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.png"
                             class="w-full text-sm text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
                         @error('attachment')

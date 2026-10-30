@@ -28,7 +28,7 @@
 
         {{-- Logo --}}
         <div class="flex h-16 items-center gap-3 px-6 border-b border-gray-200 dark:border-gray-800 flex-shrink-0">
-            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-sm">
+            <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-blue-600 text-white font-bold text-sm shadow-sm shadow-blue-900/20">
                 PM
             </div>
             <div>

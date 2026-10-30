@@ -16,7 +16,7 @@
         <div class="flex h-16 items-center justify-between">
             {{-- Logo --}}
             <a href="{{ route('public.home') }}" class="flex items-center gap-3">
-                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-sm">
+                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-blue-600 text-white font-bold text-sm shadow-sm shadow-blue-900/20">
                     PM
                 </div>
                 <div class="hidden sm:block">
@@ -55,7 +55,7 @@
                 </a>
                 @else
                 <a href="{{ route('login') }}"
-                   class="rounded-xl border border-gray-200 dark:border-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                   class="rounded-xl border border-blue-900/10 bg-yellow-300 px-4 py-2 text-sm font-semibold text-blue-950 shadow-sm shadow-yellow-500/10 transition-all hover:-translate-y-0.5 hover:bg-yellow-400">
                     Masuk
                 </a>
                 @endauth
@@ -101,7 +101,7 @@
             {{-- Brand --}}
             <div>
                 <div class="flex items-center gap-3 mb-4">
-                    <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white font-bold text-sm">PM</div>
+                    <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-blue-600 text-white font-bold text-sm">PM</div>
                     <p class="text-white font-bold text-sm">PMII</p>
                 </div>
                 <p class="text-xs text-gray-500 leading-relaxed">
@@ -132,7 +132,7 @@
                     Untuk informasi lebih lanjut, silakan kunjungi halaman kontak kami.
                 </p>
                 <a href="{{ route('public.contact') }}"
-                   class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
+                   class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-yellow-300 hover:text-yellow-200 transition-colors">
                     Hubungi Kami
                     <x-heroicon-o-arrow-right class="h-3.5 w-3.5"/>
                 </a>

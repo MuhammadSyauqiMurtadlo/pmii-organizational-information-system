@@ -8,7 +8,7 @@
 //     Route::view('dashboard', 'dashboard')->name('dashboard');
 // });
 
-// require __DIR__.'/settings.php';
+require __DIR__.'/settings.php';
 
 use App\Http\Controllers\Dashboard\ActivityManageController;
 use App\Http\Controllers\Dashboard\AnnouncementController;
@@ -62,10 +62,12 @@ Route::middleware(['auth', 'verified'])
         });
 
         // Activity management
-        Route::get('/kegiatan', [ActivityManageController::class, 'index'])->name('activities.index');
-        Route::get('/kegiatan/buat', [ActivityManageController::class, 'create'])->name('activities.create');
-        Route::get('/kegiatan/{activity}', [ActivityManageController::class, 'show'])->name('activities.show');
-        Route::get('/kegiatan/{activity}/edit', [ActivityManageController::class, 'edit'])->name('activities.edit');
+        Route::middleware(['permission:manage_rayon_activities|manage_komisariat_activities'])->group(function () {
+            Route::get('/kegiatan', [ActivityManageController::class, 'index'])->name('activities.index');
+            Route::get('/kegiatan/buat', [ActivityManageController::class, 'create'])->name('activities.create');
+            Route::get('/kegiatan/{activity}', [ActivityManageController::class, 'show'])->name('activities.show');
+            Route::get('/kegiatan/{activity}/edit', [ActivityManageController::class, 'edit'])->name('activities.edit');
+        });
 
         // Gallery
         Route::get('/galeri', [GalleryManageController::class, 'index'])->name('gallery.index');

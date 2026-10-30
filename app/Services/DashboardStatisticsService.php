@@ -90,7 +90,15 @@ class DashboardStatisticsService
 
     private function getMonthlyMembersGrowth(): array
     {
-        return Member::selectRaw("DATE_FORMAT(created_at, '%Y-%m') as month, count(*) as count")
+        $monthExpression = match (DB::connection()->getDriverName()) {
+            'sqlite' => "strftime('%Y-%m', created_at)",
+            'pgsql' => "to_char(created_at, 'YYYY-MM')",
+            'sqlsrv' => "FORMAT(created_at, 'yyyy-MM')",
+            'mysql', 'mariadb' => "DATE_FORMAT(created_at, '%Y-%m')",
+            default => throw new \LogicException('Monthly member statistics are not supported by this database driver.'),
+        };
+
+        return Member::selectRaw("{$monthExpression} as month, count(*) as count")
             ->where('created_at', '>=', now()->subYear())
             ->groupBy('month')
             ->orderBy('month')
